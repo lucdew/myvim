@@ -29,6 +29,28 @@ else
   imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 endif
 
+"---- Start: Show special characters (Press <F3>)
+set hls
+let g:HLSpace = 1
+let g:HLColorScheme = g:colors_name
+function ToggleSpaceUnderscoring()
+    if g:HLSpace
+        highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+        let @/ = " "
+        set listchars=eol:$,tab:>-,extends:>,precedes:<
+        set list
+    else
+        highlight clear
+        silent colorscheme "".g:HLColorScheme
+        let @/ = ""
+        set nolist
+    endif
+    let g:HLSpace = !g:HLSpace
+endfunction
+
+nmap <silent> <F3> <Esc>:call ToggleSpaceUnderscoring()<CR>/<CR>
+"---- End: Show special characters
+
 " auto reload vimrc when editing it
 if has("unix")
   autocmd! bufwritepost .vimrc source ~/.vimrc
