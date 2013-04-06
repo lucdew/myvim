@@ -70,6 +70,7 @@ set shiftwidth=3
 set autoindent		" auto indentation
 set incsearch		" incremental search
 set nobackup		" no *~ backup files
+set noswapfile          " no .swp file
 set copyindent		" copy the previous indentation on autoindenting
 "set ignorecase		" ignore case when searching
 set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
