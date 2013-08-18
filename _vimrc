@@ -8,6 +8,7 @@ let $LANG = 'en'        " menu language
 set ruler		" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
 
+
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
@@ -23,6 +24,7 @@ if has("gui_running")	" GUI color and font settings
   colors moria
   highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
   set lines=999 columns=9999 " Start maximized
+  set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
   imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 else
   colors desert256 " terminal color settings
@@ -81,8 +83,11 @@ set nofoldenable        " disable automatic folding
 "Plugins
 "---------------------------------------------------------------------------
 
-map <F2> :NERDTreeToggle<CR>
+"NerdTree
+map <F2> :NERDTreeToggle %:p:h<CR>
 
+"Autoclose
+let g:AutoClosePairs_add = "<> |"
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
