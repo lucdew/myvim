@@ -23,7 +23,7 @@ if has("gui_running")	" GUI color and font settings
   set cursorline        " highlight current line
   colors moria
   highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
-  set lines=999 columns=9999 " Start maximized
+  au GUIEnter * simalt ~x "Start in FullScreen
   set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
   imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 else
