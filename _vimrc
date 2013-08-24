@@ -89,6 +89,10 @@ map <F2> :NERDTreeToggle %:p:h<CR>
 "Autoclose
 let g:AutoClosePairs_add = "<> |"
 
+" ctrlp
+map <C-b> :CtrlPBuffer<CR>
+
+
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
