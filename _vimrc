@@ -92,6 +92,11 @@ let g:AutoClosePairs_add = "<> |"
 " ctrlp
 map <C-b> :CtrlPBuffer<CR>
 
+" syntastic
+let g:syntastic_mode_map = { 'mode': 'passive',
+                               \ 'active_filetypes': ['go'] }
+
+
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
