@@ -17,13 +17,18 @@ syntax on " syntax highlight
 
 
 if has("gui_running")	" GUI color and font settings
-  set guifont=Consolas:h10
   set background=dark 
   set t_Co=256          " 256 color mode
   set cursorline        " highlight current line
   colors moria
   highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
-  au GUIEnter * simalt ~x "Start in FullScreen
+  if has("win32") || has("win16")
+     au GUIEnter * simalt ~x "Start in FullScreen
+     set guifont=Consolas:h11
+  else
+     set lines=999 columns=999
+     set guifont=Consolas\ 10
+  endif
   set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
   imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 else
