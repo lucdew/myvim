@@ -24,7 +24,7 @@ if has("gui_running")	" GUI color and font settings
   highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
   if has("win32") || has("win16")
      au GUIEnter * simalt ~x "Start in FullScreen
-     set guifont=Consolas:h11
+     set guifont=Consolas:h10
   else
      set lines=999 columns=999
      set guifont=Consolas\ 10
@@ -94,8 +94,9 @@ map <F2> :NERDTreeToggle %:p:h<CR>
 "Autoclose
 let g:AutoClosePairs_add = "<> |"
 
+
 " ctrlp
-map <C-b> :CtrlPBuffer<CR>
+" map <C-b> :CtrlPBuffer<CR>
 
 " syntastic
 let g:syntastic_mode_map = { 'mode': 'passive',
