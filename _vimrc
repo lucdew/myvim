@@ -103,6 +103,13 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                                \ 'active_filetypes': ['go'] }
 
 
+if has('win32')
+   let g:snippets_dir="~/vimfiles/bundle/snipmate/snippets/, ~/vimfiles/bundle/snipmate-nodejs/snippets"
+endif
+
+" vim-javascript-syntax
+" code folding
+au FileType javascript call JavaScriptFold()
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
