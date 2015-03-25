@@ -1,19 +1,51 @@
 "---------------------
 " Luc Dewavrin's vimrc
 "---------------------
-call pathogen#infect()
-set langmenu=en_US.UTF-8   " sets the language of the menu (gvim)
-let $LANG = 'en'        " menu language
 
-set ruler		" show the cursor position all the time
-set autoread		" auto read when file is changed from outside
+set nocompatible
+filetype off
+if has('win32') || has('win64')
+  set rtp+=~/vimfiles/bundle/Vundle.vim/
+  call vundle#rc('$HOME/vimfiles/bundle/')
+else
+  " Usual quickstart instructions
+  set rtp+=~/.vim/bundle/Vundle.vim/
+  call vundle#rc()
+endif
 
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'                 " let Vundle manage Vundle, required
+Plugin 'bling/vim-airline'                 " Nice status line
+Plugin 'kien/ctrlp.vim'                    " Advanced search in opened buffers
+Plugin 'scrooloose/nerdtree'               " File explorer
+Plugin 'jlanzarotta/bufexplorer'           " Manage opened buffers
+Plugin 'ervandew/supertab'                 " Autocompletion with tab key
+Plugin 'fatih/vim-go'                      " Go development
+Plugin 'Townk/vim-autoclose'               " Autoclose brackets
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" Optional:
+Plugin 'honza/vim-snippets'
+
+
+
+call vundle#end()
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
 syntax on " syntax highlight
+
+set langmenu=en_US.UTF-8   " sets the language of the menu (gvim)
+let $LANG = 'en'        " menu language
+
+set noruler
+set laststatus=2
+set autoread		" auto read when file is changed from outside
 
 
 if has("gui_running")	" GUI color and font settings
@@ -95,17 +127,20 @@ map <F2> :NERDTreeToggle %:p:h<CR>
 let g:AutoClosePairs_add = "<> |"
 
 
+" Disabled after migration to vundle
 " ctrlp
 " map <C-b> :CtrlPBuffer<CR>
 
+
+" Disabled after migration to vundle
 " syntastic
-let g:syntastic_mode_map = { 'mode': 'passive',
-                               \ 'active_filetypes': ['go'] }
+" let g:syntastic_mode_map = { 'mode': 'passive',
+"                               \ 'active_filetypes': ['go'] }
 
-
-if has('win32')
-   let g:snippets_dir="~/vimfiles/bundle/snipmate/snippets/, ~/vimfiles/bundle/snipmate-nodejs/snippets"
-endif
+" Disabled after migration to vundle
+"if has('win32')
+"   let g:snippets_dir="~/vimfiles/bundle/snipmate/snippets/, ~/vimfiles/bundle/snipmate-nodejs/snippets"
+"endif
 
 " vim-javascript-syntax
 " code folding
@@ -135,6 +170,3 @@ fun! Big5()
 	set encoding=big5
 	set fileencoding=big5
 endfun
-
-
-
