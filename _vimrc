@@ -142,9 +142,10 @@ let g:AutoClosePairs_add = "<> |"
 "   let g:snippets_dir="~/vimfiles/bundle/snipmate/snippets/, ~/vimfiles/bundle/snipmate-nodejs/snippets"
 "endif
 
+" Disabled after migration to vundle
 " vim-javascript-syntax
 " code folding
-au FileType javascript call JavaScriptFold()
+"au FileType javascript call JavaScriptFold()
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
