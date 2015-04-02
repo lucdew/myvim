@@ -3,8 +3,8 @@
 
 SCRIPTS_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-
-if [ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ];then
+OS=`echo uname -s | cut -c1-6`
+if [ "$OS" = "CYGWIN" ]; then
     OS="WIN"
     HOMEDIR=`cygpath $USERPROFILE`
     VIMDIR=$HOMEDIR/vimfiles
@@ -37,7 +37,7 @@ BUNDLEDIR=$VIMDIR/bundle
 cd $BUNDLEDIR
 git clone --depth 1 https://github.com/gmarik/Vundle.vim.git Vundle.vim
 
-if [ "WIN" == "$OS" ] ; then
+if [ "WIN" = "$OS" ] ; then
     cp "$SCRIPTS_DIR/_vimrc" $HOMEDIR/_vimrc
     cp "$SCRIPTS_DIR/_gvimrc" $HOMEDIR/_gvimrc
     echo "To finish installation, start vim and enter the following command\n"
