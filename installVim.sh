@@ -3,7 +3,7 @@
 
 SCRIPTS_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-OS=`echo uname -s | cut -c1-6`
+OS=`uname -s | cut -c1-6`
 if [ "$OS" = "CYGWIN" ]; then
     OS="WIN"
     HOMEDIR=`cygpath $USERPROFILE`
