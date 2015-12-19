@@ -26,6 +26,7 @@ Plugin 'Townk/vim-autoclose'               " Autoclose brackets
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'lucdew/vim-yaml'
 
 " Optional:
 Plugin 'honza/vim-snippets'
