@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set - x
 
 SCRIPTS_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
