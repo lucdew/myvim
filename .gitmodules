@@ -1,3 +1,31 @@
-[submodule "C:\\Users\\Luc/vimfiles/bundle/Vundle.vim"]
-	path = C:\\Users\\Luc/vimfiles/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+
+[submodule "bundle/vim-go"]
+	path = bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+
+[submodule "bundle/vim-yaml"]
+	path = bundle/vim-yaml
+	url = https://github.com/stephpy/vim-yaml.git
+
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+
+[submodule "bundle/vim-autoclose"]
+	path = bundle/vim-autoclose
+	url = https://github.com/Townk/vim-autoclose.git

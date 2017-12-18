@@ -4,36 +4,11 @@
 
 set nocompatible
 filetype off
-if has('win32') || has('win64')
-  set rtp+=~/vimfiles/bundle/Vundle.vim/
-  call vundle#rc('$HOME/vimfiles/bundle/')
-else
-  " Usual quickstart instructions
-  set rtp+=~/.vim/bundle/Vundle.vim/
-  call vundle#rc()
-endif
 
-call vundle#begin()
+" load plugins
+execute pathogen#infect()
+call pathogen#helptags()
 
-Plugin 'gmarik/Vundle.vim'                 " let Vundle manage Vundle, required
-Plugin 'bling/vim-airline'                 " Nice status line
-Plugin 'kien/ctrlp.vim'                    " Advanced search in opened buffers
-Plugin 'scrooloose/nerdtree'               " File explorer
-Plugin 'jlanzarotta/bufexplorer'           " Manage opened buffers
-Plugin 'ervandew/supertab'                 " Autocompletion with tab key
-Plugin 'fatih/vim-go'                      " Go development
-Plugin 'Townk/vim-autoclose'               " Autoclose brackets
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'stephpy/vim-yaml'
-
-" Optional:
-Plugin 'honza/vim-snippets'
-
-
-
-call vundle#end()
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
