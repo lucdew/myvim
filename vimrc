@@ -102,27 +102,6 @@ map <F2> :NERDTreeToggle %:p:h<CR>
 "Autoclose
 let g:AutoClosePairs_add = "<> |"
 
-
-" Disabled after migration to vundle
-" ctrlp
-" map <C-b> :CtrlPBuffer<CR>
-
-
-" Disabled after migration to vundle
-" syntastic
-" let g:syntastic_mode_map = { 'mode': 'passive',
-"                               \ 'active_filetypes': ['go'] }
-
-" Disabled after migration to vundle
-"if has('win32')
-"   let g:snippets_dir="~/vimfiles/bundle/snipmate/snippets/, ~/vimfiles/bundle/snipmate-nodejs/snippets"
-"endif
-
-" Disabled after migration to vundle
-" vim-javascript-syntax
-" code folding
-"au FileType javascript call JavaScriptFold()
-
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
