@@ -4,7 +4,7 @@ Greatly inspired from [Jesse Frazelle's vim](https://github.com/jessfraz/.vim)
 
 ## Linux Setup
 
-Run the following command
+Run the following command:
 
 ```
 $ cd ~/
