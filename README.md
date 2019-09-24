@@ -9,11 +9,11 @@ Run the following command:
 ```
 $ cd ~/
 $ git clone --recursive https://github.com/lucdew/myvim.git .vim
-$ ln -sf $HOME/.vim/vimrc $HOME/.vimrc
-$ ln -sf $HOME/.vim/gvimrc $HOME/.gvimrc
 $ cd $HOME/.vim
-$ git submodule update --init
+$ make install
+$ make update
 ```
+
 
 
 ## Plugins
@@ -25,4 +25,5 @@ $ git submodule update --init
 * [github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes.git)
 * [github.com/Townk/vim-autoclose](https://github.com/Townk/vim-autoclose.git)
 * [github.com/fatih/vim-go](https://github.com/fatih/vim-go.git)
+* [github.com/prettier/vim-prettier](https://github.com/prettier/vim-prettier.git)
 * [github.com/stephpy/vim-yaml](https://github.com/stephpy/vim-yaml.git)
