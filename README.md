@@ -16,14 +16,14 @@ $ make update
 
 
 
-## Plugins
+## Plugins Used
 
-* [github.com/ctrlpvim/ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim.git)
-* [github.com/scrooloose/nerdtree](https://github.com/scrooloose/nerdtree.git)
-* [github.com/ervandew/supertab](https://github.com/ervandew/supertab.git)
-* [github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline.git)
-* [github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes.git)
-* [github.com/Townk/vim-autoclose](https://github.com/Townk/vim-autoclose.git)
-* [github.com/fatih/vim-go](https://github.com/fatih/vim-go.git)
-* [github.com/prettier/vim-prettier](https://github.com/prettier/vim-prettier.git)
-* [github.com/stephpy/vim-yaml](https://github.com/stephpy/vim-yaml.git)
+* [github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
+* [github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+* [github.com/tpope/vim-surround](https://github.com/tpope/vim-surround)
+* [github.com/Raimondi/delimitMate](https://github.com/Raimondi/delimitMate)
+* [github.com/stephpy/vim-yaml](https://github.com/stephpy/vim-yaml)
+* [github.com/scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
+* [github.com/fatih/vim-go](https://github.com/fatih/vim-go)
+* [github.com/junegunn/fzf](https://github.com/junegunn/fzf)
+* [github.com/junegunn/fzf.vim](https://github.com/junegunn/fzf.vim)

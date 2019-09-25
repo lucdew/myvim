@@ -6,8 +6,27 @@ set nocompatible
 filetype off
 
 " load plugins
-execute pathogen#infect()
-call pathogen#helptags()
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+
+Plug 'stephpy/vim-yaml'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+Plug 'fatih/vim-go'
+
+" Fzf
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+
+call plug#end()
 
 
 filetype on           " Enable filetype detection
@@ -99,39 +118,12 @@ set nofoldenable        " disable automatic folding
 "NerdTree
 map <F2> :NERDTreeToggle %:p:h<CR>
 
-"Autoclose
-let g:AutoClosePairs_add = "<> |"
-
-"Temporary should have eslint run prettier instead
-"Prettier
-let g:prettier#autoformat = 0
-" single quotes over double quotes
-" Prettier default: false
-let g:prettier#config#single_quote = 'false'
-" print spaces between brackets
-" Prettier default: true
-let g:prettier#config#bracket_spacing = 'true'
-" print spaces between brackets
-" Prettier default: true
-let g:prettier#config#bracket_spacing = 'true'
-" put > on the last line instead of new line
-" Prettier default: false
-let g:prettier#config#jsx_bracket_same_line = 'false'
-" avoid|always
-" Prettier default: avoid
-let g:prettier#config#arrow_parens = 'avoid'
-" none|es5|all
-" Prettier default: none
-let g:prettier#config#trailing_comma = 'all'
-" flow|babylon|typescript|css|less|scss|json|graphql|markdown
-" Prettier default: babylon
-let g:prettier#config#parser = 'babylon'
-" cli-override|file-override|prefer-file
-let g:prettier#config#config_precedence = 'prefer-file'
-" always|never|preserve
-let g:prettier#config#prose_wrap = 'preserve'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
+" ==================== delimitMate ====================
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_smart_quotes = 1
+let g:delimitMate_expand_inside_quotes = 0
+let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS

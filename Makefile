@@ -14,21 +14,21 @@ install: ## Sets up symlink for user and root .vimrc for vim and neovim.
 	#sudo ln -snf "$(HOME)/.vimrc" /root/.config/nvim/init.vim
 
 .PHONY: update
-update: update-pathogen update-plugins ## Updates pathogen and all plugins.
+update: update-vim-plug update-plugins ## Updates pathogen and all plugins.
 
 .PHONY: update-plugins
 update-plugins: ## Updates all plugins.
-	git submodule update --init --recursive
-	git submodule foreach 'git pull --recurse-submodules origin `git rev-parse --abbrev-ref HEAD`'
+	vim +'PlugInstall --sync' +qa
 
-.PHONY: update-pathogen
-update-pathogen: ## Updates pathogen.
-	curl -LSso $(CURDIR)/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+.PHONY: update-vim-plug
+update-vim-plug: ## Updates pathogen.
+	curl -LSso $(CURDIR)/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 .PHONY: README.md
 README.md: ## Generates and updates plugin info in README.md.
-	@sed -i '/Dockerfile/q' $@
-	@git  submodule --quiet foreach bash -c "echo -e \"* [\$$(git config --get remote.origin.url | sed 's#https://##' | sed 's#git://##' | sed 's/.git//')](\$$(git config --get remote.origin.url))\"" >> $@
+	@sed -i '/Plugins Used\n/q' $@
+	@cat vimrc | grep -ozP "(?s)plugged'\)\K.*?(?=\ncall plug\#end)" | tr -d '\000'  | grep -E '^Plug' | sed -E "s#Plug '([^']+)'.*#* [github.com/\1](https://github.com/\1)#g" >> $@
+	
 
 check_defined = \
 				$(strip $(foreach 1,$1, \
@@ -38,14 +38,6 @@ __check_defined = \
 				  $(error Undefined $1$(if $2, ($2))$(if $(value @), \
 				  required by target `$@')))
 
-.PHONY: remove-submodule
-remove-submodule: ## Removes a git submodule (ex MODULE=bundle/nginx.vim).
-	@:$(call check_defined, MODULE, path of module to remove)
-	mv $(MODULE) $(MODULE).tmp
-	git submodule deinit -f -- $(MODULE)
-	$(RM) -r .git/modules/$(MODULE)
-	git rm -f $(MODULE)
-	$(RM) -r $(MODULE).tmp
 
 
 .PHONY: help
