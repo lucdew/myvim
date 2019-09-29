@@ -15,11 +15,16 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
+Plug 'elzr/vim-json'
+
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 
 " Fzf
@@ -58,10 +63,8 @@ if has("gui_running")	" GUI color and font settings
      set guifont=Consolas\ 10
   endif
   set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
-  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 else
   colors desert256 " terminal color settings
-  imap <nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-p>")<cr>
 endif
 
 "---- Start: Show special characters (Press <F3>)
@@ -119,12 +122,15 @@ set nofoldenable        " disable automatic folding
 "NerdTree
 map <F2> :NERDTreeToggle %:p:h<CR>
 
-" ==================== delimitMate ====================
+"  delimitMate
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+
+" fzf
+nnoremap <silent> <C-p> :FZF -m<cr>
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
