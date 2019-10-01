@@ -14,8 +14,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
-
 Plug 'godlygeek/tabular'
+
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
 Plug 'elzr/vim-json'
@@ -26,6 +26,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
+Plug 'dense-analysis/ale'
 
 " Fzf
 Plug 'junegunn/fzf', { 'do': './install --all' }
@@ -131,6 +132,17 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 " fzf
 nnoremap <silent> <C-p> :FZF -m<cr>
+
+" ale
+let g:ale_enabled = 1
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_linters = { 'javascript': ['eslint']}
+let g:ale_fixers = {
+\   'javascript': ['prettier-eslint'],
+\   'css': ['prettier'],
+\}
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
