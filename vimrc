@@ -19,6 +19,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
 Plug 'elzr/vim-json'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 
 " On-demand loading
@@ -35,6 +36,8 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+let mapleader = ","
+let g:mapleader = ","
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
@@ -131,7 +134,8 @@ let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 " fzf
-nnoremap <silent> <C-p> :FZF -m<cr>
+nnoremap <silent> <leader>p :FZF -m<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
 
 " ale
 let g:ale_enabled = 1
