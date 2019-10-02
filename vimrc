@@ -17,6 +17,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-sensible'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'ap/vim-buftabline'
 
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
@@ -163,6 +164,11 @@ let g:ale_fixers = {
 " replace with clipboard register, needs a motion afterwards and requires
 " +clipboard flag to be set like with gvim
 nmap <silent> <leader>r "*gr
+
+" buftabline
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 
 "--------------------------------------------------------------------------- 
