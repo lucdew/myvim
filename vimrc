@@ -15,20 +15,23 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
+Plug 'tpope/vim-sensible'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
 Plug 'elzr/vim-json'
-Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'cespare/vim-toml'
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
+Plug 'dense-analysis/ale'
 
 
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree'
-
-Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
-Plug 'dense-analysis/ale'
+" Add git status icons in nerd tree
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Fzf
 Plug 'junegunn/fzf', { 'do': './install --all' }
