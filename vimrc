@@ -23,7 +23,8 @@ Plug 'vim-scripts/ReplaceWithRegister'
 
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
@@ -125,6 +126,13 @@ set nofoldenable        " disable automatic folding
 
 "NerdTree
 map <F2> :NERDTreeToggle %:p:h<CR>
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store', 'node_modules']
+
+" Close nerdtree and vim on close file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "  delimitMate
 let g:delimitMate_expand_cr = 1
