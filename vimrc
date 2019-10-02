@@ -148,6 +148,12 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \}
 
+" vim replace
+" replace with clipboard register, needs a motion afterwards and requires
+" +clipboard flag to be set like with gvim
+nmap <silent> <leader>r "*gr
+
+
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
