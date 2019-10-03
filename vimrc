@@ -27,6 +27,13 @@ Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 Plug 'dense-analysis/ale'
 
+" Use release branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Or latest tag
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+" Or build from source code by use yarn: https://yarnpkg.com
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
 
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -56,6 +63,31 @@ let $LANG = 'en'        " menu language
 set noruler
 set laststatus=2
 set autoread		" auto read when file is changed from outside
+
+
+" Better Completion
+set complete=.,w,b,u,t
+set completeopt=longest,menuone
+
+" Wildmenu completion {{{
+set wildmenu
+" set wildmode=list:longest
+set wildmode=list:full
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=go/pkg                           " Go static files
+set wildignore+=go/bin                           " Go bin files
+set wildignore+=go/bin-vagrant                   " Go bin-vagrant files
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
 
 
 if has("gui_running")	" GUI color and font settings
@@ -160,6 +192,7 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \}
 
+
 " vim replace
 " replace with clipboard register, needs a motion afterwards and requires
 " +clipboard flag to be set like with gvim
@@ -170,6 +203,20 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
+" Coc
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" use <c-space>for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
