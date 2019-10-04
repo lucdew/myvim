@@ -186,6 +186,18 @@ noremap <Leader>f :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store', 'node_modules']
 
+autocmd VimEnter * call NERDTreeAddKeyMap({
+        \ 'key': 'yy',
+        \ 'callback': 'NERDTreeYankCurrentNode',
+        \ 'quickhelpText': 'put full path of current node into the default register' })
+
+function! NERDTreeYankCurrentNode()
+    let n = g:NERDTreeFileNode.GetSelected()
+    if n != {}
+       call setreg('+', (fnamemodify(n.path.str(), ':.')))
+    endif
+endfunction
+
 " Close nerdtree and vim on close file
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
