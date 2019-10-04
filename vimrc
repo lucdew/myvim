@@ -18,6 +18,7 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-sensible'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ap/vim-buftabline'
+Plug 'Yggdroot/indentLine'
 
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
@@ -42,6 +43,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Fzf
+" Set in PATH the following commands
+" export FZF_DEFAULT_COMMAND="fd --type f --exclude node_modules"
+" export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+" export FZF_ALT_C_COMMAND="fd -t d --exclude node_modules . $HOME"
+
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -112,22 +118,6 @@ endif
 set hls
 let g:HLSpace = 1
 let g:HLColorScheme = g:colors_name
-function ToggleSpaceUnderscoring()
-    if g:HLSpace
-        highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
-        let @/ = " "
-        set listchars=eol:$,tab:>-,extends:>,precedes:<
-        set list
-    else
-        highlight clear
-        silent colorscheme "".g:HLColorScheme
-        let @/ = ""
-        set nolist
-    endif
-    let g:HLSpace = !g:HLSpace
-endfunction
-
-nmap <silent> <F3> <Esc>:call ToggleSpaceUnderscoring()<CR>/<CR>
 "---- End: Show special characters
 
 " auto reload vimrc when editing it
@@ -143,18 +133,43 @@ set t_vb=
 
 " TAB setting{
 set expandtab        "replace <TAB> with spaces
-set softtabstop=3 
-set shiftwidth=3 
+set softtabstop=3
+set shiftwidth=3
 
 set autoindent		" auto indentation
 set incsearch		" incremental search
 set nobackup		" no *~ backup files
 set noswapfile          " no .swp file
-set copyindent		" copy the previous indentation on autoindenting
+set copyindent          " copy the previous indentation on autoindenting
 "set ignorecase		" ignore case when searching
 set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
 set nofoldenable        " disable automatic folding
+
+function ToggleSpaceUnderscoring()
+    if g:HLSpace
+        highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+        let @/ = " "
+        set listchars=eol:$,tab:→\ ,extends:>,precedes:<,nbsp:∙
+        set list
+    else
+        highlight clear
+        silent colorscheme "".g:HLColorScheme
+        let @/ = ""
+        set nolist
+    endif
+    let g:HLSpace = !g:HLSpace
+endfunction
+
+nmap <silent> <F3> <Esc>:call ToggleSpaceUnderscoring()<CR>/<CR>
+
+highlight SpecialKey ctermfg=246
+set list
+set list lcs=trail:·,tab:→\ 
+
+
+" Auto change directory to opened buffer
+autocmd BufEnter * silent! lcd %:p:h
 
 "---------------------------------------------------------------------------
 "Plugins
@@ -218,21 +233,27 @@ inoremap <silent><expr> <Tab>
 " use <c-space>for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" indentLine
+" Issue with NerdTree disabling it
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·'
+autocmd BufEnter NERD_tree* :LeadingSpaceDisable
+
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
-set encoding=utf-8                                  
+set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,latin1
 
 fun! ViewUTF8()
-	set encoding=utf-8                                  
+	set encoding=utf-8
 	set termencoding=big5
 endfun
 
 fun! UTF8()
-	set encoding=utf-8                                  
+	set encoding=utf-8
 	set termencoding=big5
 	set fileencoding=utf-8
 	set fileencodings=utf-8,latin1
@@ -242,3 +263,5 @@ fun! Big5()
 	set encoding=big5
 	set fileencoding=big5
 endfun
+
+
