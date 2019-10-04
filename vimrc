@@ -169,7 +169,11 @@ set list lcs=trail:·,tab:→\
 
 
 " Auto change directory to opened buffer
-autocmd BufEnter * silent! lcd %:p:h
+" commented out it is annoying
+" autocmd BufEnter * silent! lcd %:p:h
+
+" Search highlighted text
+vnoremap // y/\V<C-R>"<CR>
 
 "---------------------------------------------------------------------------
 "Plugins
@@ -195,6 +199,13 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 " fzf
 nnoremap <silent> <leader>p :FZF -m<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
+" command below should be project dependant
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 " ale
 let g:ale_enabled = 1
