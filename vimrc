@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -19,6 +20,8 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ap/vim-buftabline'
 Plug 'Yggdroot/indentLine'
+Plug 'easymotion/vim-easymotion'
+
 
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
@@ -96,24 +99,42 @@ set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 
 
-if has("gui_running")	" GUI color and font settings
-  set background=dark 
-  set t_Co=256          " 256 color mode
-  set cursorline        " highlight current line
-  colors moria
-  highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
-  if has("win32") || has("win16")
-     au GUIEnter * simalt ~x "Start in FullScreen
-     set guifont=Consolas:h10
-  else
-     set lines=999 columns=999
-     set guifont=Consolas\ 10
-  endif
-  set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
-else
-  colors desert256 " terminal color settings
+syntax enable
+if has('gui_running')
+  set transparency=3
+  " fix js regex syntax
+  set regexpengine=1
 endif
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="high"
+" let g:hybrid_use_Xresources = 1
+" let g:rehash256 = 1
+colorscheme solarized
+set guifont=Inconsolata:h15
+set guioptions-=L
 
+
+
+"if has("gui_running")	" GUI color and font settings
+"  set background=dark 
+"  set t_Co=256          " 256 color mode
+"  set cursorline        " highlight current line
+"  colors moria
+"  highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
+"  if has("win32") || has("win16")
+"     au GUIEnter * simalt ~x "Start in FullScreen
+"     set guifont=Consolas:h10
+"  else
+"     set lines=999 columns=999
+"     set guifont=Consolas\ 10
+"  endif
+"  set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
+"else
+"  colors desert256 " terminal color settings
+"endif
+"
 "---- Start: Show special characters (Press <F3>)
 set hls
 let g:HLSpace = 1
@@ -174,6 +195,7 @@ set list lcs=trail:·,tab:→\
 
 " Search highlighted text
 vnoremap // y/\V<C-R>"<CR>
+noremap <silent> <F10> :%s/^V^M//g<CR>
 
 "---------------------------------------------------------------------------
 "Plugins
