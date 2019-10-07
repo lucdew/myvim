@@ -135,7 +135,6 @@ set guioptions-=L
 "  colors desert256 " terminal color settings
 "endif
 "
-"---- Start: Show special characters (Press <F3>)
 set hls
 let g:HLSpace = 1
 let g:HLColorScheme = g:colors_name
@@ -182,6 +181,7 @@ function ToggleSpaceUnderscoring()
     let g:HLSpace = !g:HLSpace
 endfunction
 
+"---- Start: Show special characters (Press <F3>)
 nmap <silent> <F3> <Esc>:call ToggleSpaceUnderscoring()<CR>/<CR>
 
 highlight SpecialKey ctermfg=246
@@ -195,7 +195,6 @@ set list lcs=trail:·,tab:→\
 
 " Search highlighted text
 vnoremap // y/\V<C-R>"<CR>
-noremap <silent> <F10> :%s/^V^M//g<CR>
 
 "---------------------------------------------------------------------------
 "Plugins
