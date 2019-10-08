@@ -109,13 +109,14 @@ syntax enable
 if has("gui_running")	" GUI color and font settings
   set background=dark
   colorscheme solarized
-  set transparency=3
   " fix js regex syntax
   set regexpengine=1
   let g:solarized_termcolors=256
   let g:solarized_termtrans=1
   let g:solarized_contrast="high"
-  set guioptions-=L
+  set guioptions-=L " Remove left-hand scroll
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
 "  set background=dark 
 "  set t_Co=256          " 256 color mode
 "  set cursorline        " highlight current line
