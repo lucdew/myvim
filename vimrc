@@ -100,24 +100,22 @@ set wildignore+=*.orig                           " Merge resolution files
 
 
 syntax enable
-if has('gui_running')
+" let g:hybrid_use_Xresources = 1
+" let g:rehash256 = 1
+"set guifont=Inconsolata:h15
+
+
+
+if has("gui_running")	" GUI color and font settings
+  set background=dark
+  colorscheme solarized
   set transparency=3
   " fix js regex syntax
   set regexpengine=1
-endif
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-" let g:hybrid_use_Xresources = 1
-" let g:rehash256 = 1
-colorscheme solarized
-set guifont=Inconsolata:h15
-set guioptions-=L
-
-
-
-"if has("gui_running")	" GUI color and font settings
+  let g:solarized_termcolors=256
+  let g:solarized_termtrans=1
+  let g:solarized_contrast="high"
+  set guioptions-=L
 "  set background=dark 
 "  set t_Co=256          " 256 color mode
 "  set cursorline        " highlight current line
@@ -131,9 +129,9 @@ set guioptions-=L
 "     set guifont=Consolas\ 10
 "  endif
 "  set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
-"else
-"  colors desert256 " terminal color settings
-"endif
+else
+  colors desert256 " terminal color settings
+endif
 "
 set hls
 let g:HLSpace = 1
