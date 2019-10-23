@@ -165,23 +165,22 @@ set smartcase		" ignore case if search pattern is all lowercase,case-sensitive o
 set smarttab		" insert tabs on the start of a line according to context
 set nofoldenable        " disable automatic folding
 
-function ToggleSpaceUnderscoring()
+function! ToggleSpecialCharactersHighlighting()
     if g:HLSpace
         highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
-        let @/ = " "
-        set listchars=eol:$,tab:→\ ,extends:>,precedes:<,nbsp:∙
+        set listchars=eol:$,tab:→\ ,extends:>,precedes:<,nbsp:·,trail:·,space:·
         set list
     else
         highlight clear
+        highlight SpecialKey ctermfg=246
         silent colorscheme "".g:HLColorScheme
-        let @/ = ""
-        set nolist
+        set list lcs=trail:·,tab:→\ 
     endif
     let g:HLSpace = !g:HLSpace
 endfunction
 
 "---- Start: Show special characters (Press <F3>)
-nmap <silent> <F3> <Esc>:call ToggleSpaceUnderscoring()<CR>/<CR>
+nmap <silent> <F3> <Esc>:call ToggleSpecialCharactersHighlighting()<CR>/<CR>
 
 highlight SpecialKey ctermfg=246
 set list
