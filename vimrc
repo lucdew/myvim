@@ -239,6 +239,13 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+
+nnoremap <silent> <Leader>c :call fzf#run({
+\   'source':  'cat ~/.vim/commands',
+\   'sink':   '!bash -c',
+\   'down': '40%'
+\ })<CR>
+
 " ale
 let g:ale_enabled = 1
 let g:ale_linters_explicit = 1
