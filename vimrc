@@ -33,11 +33,6 @@ Plug 'dense-analysis/ale'
 
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Or latest tag
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-" Or build from source code by use yarn: https://yarnpkg.com
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
 
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -194,11 +189,15 @@ set list lcs=trail:·,tab:→\
 " Search highlighted text
 vnoremap // y/\V<C-R>"<CR>
 
-"---------------------------------------------------------------------------
+" ========================================================================
+"-------------------------------------------------------------------------
 "Plugins
-"---------------------------------------------------------------------------
+"-------------------------------------------------------------------------
+" ========================================================================
 
+"-------------------------------------------------------------------------
 "NerdTree
+"-------------------------------------------------------------------------
 map <F2> :NERDTreeToggle %:p:h<CR>
 noremap <Leader>n :NERDTreeToggle<cr>
 noremap <Leader>f :NERDTreeFind<cr>
@@ -218,19 +217,24 @@ function! NERDTreeYankCurrentNode()
 endfunction
 
 " Close nerdtree and vim on close file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Disabled not working as expected (close even if there are more than 1 buffer)
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " If more than one window and previous buffer was NERDTree, go back to it.
 autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
+"-------------------------------------------------------------------------
 "  delimitMate
-let g:delimitMate_expand_cr = 1
+"-------------------------------------------------------------------------
+" let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
+"-------------------------------------------------------------------------
 " fzf
+"-------------------------------------------------------------------------
 nnoremap <silent> <leader>p :FZF -m<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 " command below should be project dependant
@@ -248,11 +252,19 @@ nnoremap <silent> <Leader>c :call fzf#run({
 \   'down': '40%'
 \ })<CR>
 
+"let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+"-------------------------------------------------------------------------
 " ale
+"-------------------------------------------------------------------------
 let g:ale_enabled = 1
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 " let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_cache_executable_check_failures=1
 let g:ale_linters = { 'javascript': ['eslint']}
 let g:ale_fixers = {
 \   'javascript': ['prettier-eslint'],
@@ -260,17 +272,23 @@ let g:ale_fixers = {
 \}
 
 
+"-------------------------------------------------------------------------
 " vim replace
+"-------------------------------------------------------------------------
 " replace with clipboard register, needs a motion afterwards and requires
 " +clipboard flag to be set like with gvim
 nmap <silent> <leader>r "*gr
 
+"-------------------------------------------------------------------------
 " buftabline
+"-------------------------------------------------------------------------
 set hidden
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+"nnoremap <C-N> :bnext<CR>
+"nnoremap <C-P> :bprev<CR>
 
+"-------------------------------------------------------------------------
 " Coc
+"-------------------------------------------------------------------------
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -284,6 +302,11 @@ inoremap <silent><expr> <Tab>
 
 " use <c-space>for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " indentLine
 " Issue with NerdTree disabling it
