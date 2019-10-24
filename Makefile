@@ -14,11 +14,16 @@ install: ## Sets up symlink for user and root .vimrc for vim and neovim.
 	#sudo ln -snf "$(HOME)/.vimrc" /root/.config/nvim/init.vim
 
 .PHONY: update
-update: update-vim-plug update-plugins ## Updates pathogen and all plugins.
+update: update-vim-plug update-plugins update-coc-plugins ## Updates pathogen and all plugins.
 
 .PHONY: update-plugins
 update-plugins: ## Updates all plugins.
 	vim +'PlugInstall --sync' +qa
+
+# Todo fix cocInstall which seems 
+.PHONY: update-coc-plugins
+update-coc-plugins:
+	vim +'CocInstall -sync coc-tsserver' +'CocInstall -sync coc-json' +'CocInstall -sync coc-rust-analyzer' +qa
 
 .PHONY: update-vim-plug
 update-vim-plug: ## Updates pathogen.
