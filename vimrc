@@ -245,6 +245,12 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+command! -bang -nargs=* Rgd
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.<q-args>, 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 nnoremap <silent> <Leader>c :call fzf#run({
 \   'source':  'cat ~/.vim/commands',
