@@ -189,6 +189,9 @@ set list lcs=trail:·,tab:→\
 " Search highlighted text
 vnoremap // y/\V<C-R>"<CR>
 
+" command to delete all buffers except the one being edited
+command! BufOnly silent! execute "%bd|e#|bd#"
+
 " ========================================================================
 "-------------------------------------------------------------------------
 "Plugins
