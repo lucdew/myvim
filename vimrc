@@ -10,7 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -102,8 +102,6 @@ syntax enable
 
 
 if has("gui_running")	" GUI color and font settings
-  set background=dark
-  colorscheme solarized
   " fix js regex syntax
   set regexpengine=1
   let g:solarized_termcolors=256
@@ -125,9 +123,11 @@ if has("gui_running")	" GUI color and font settings
 "     set guifont=Consolas\ 10
 "  endif
 "  set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
-else
-  colors desert256 " terminal color settings
 endif
+
+set background=dark
+colors gruvbox " terminal color settings
+set termguicolors
 "
 set hls
 let g:HLSpace = 1
