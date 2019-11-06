@@ -10,5 +10,6 @@
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
     }
-  }
+  },
+  "coc.preferences.colorSupport": true
 }

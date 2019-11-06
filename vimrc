@@ -126,8 +126,11 @@ if has("gui_running")	" GUI color and font settings
 endif
 
 set background=dark
+let g:gruvbox_guisp_fallback = "bg"
+
 colors gruvbox " terminal color settings
 set termguicolors
+
 "
 set hls
 let g:HLSpace = 1
@@ -316,6 +319,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 
 " indentLine
 " Issue with NerdTree disabling it
