@@ -11,5 +11,28 @@
       "filetypes": ["go"]
     }
   },
-  "coc.preferences.colorSupport": true
+  "coc.preferences.colorSupport": true,
+  "suggest.noselect": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "go",
+    "rs",
+    "yaml",
+    "yml",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ],
+  "prettier.eslintIntegration": true,
+  "prettier.disableLanguages": [
+     "vue",
+     "yaml"
+  ],
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•"
 }

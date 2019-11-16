@@ -24,12 +24,8 @@ Plug 'easymotion/vim-easymotion'
 
 
 Plug 'plasticboy/vim-markdown'
-Plug 'stephpy/vim-yaml'
-Plug 'elzr/vim-json'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
-Plug 'dense-analysis/ale'
 
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -269,20 +265,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
-"-------------------------------------------------------------------------
-" ale
-"-------------------------------------------------------------------------
-let g:ale_enabled = 1
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
-" let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_cache_executable_check_failures=1
-let g:ale_linters = { 'javascript': ['eslint']}
-let g:ale_fixers = {
-\   'javascript': ['prettier-eslint'],
-\   'css': ['prettier'],
-\}
-
 
 "-------------------------------------------------------------------------
 " vim replace
@@ -302,6 +284,14 @@ set hidden
 " Coc
 "-------------------------------------------------------------------------
 " use <tab> for trigger completion and navigate to the next complete item
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-yaml', 
+  \ 'coc-json', 
+  \ 'coc-rust-analyzer',
+  \ ]
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -320,12 +310,45 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Remap for rename current word
+nmap <F6> <Plug>(coc-rename)
+
 
 " indentLine
 " Issue with NerdTree disabling it
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 autocmd BufEnter NERD_tree* :LeadingSpaceDisable
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
