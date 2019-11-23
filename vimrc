@@ -23,7 +23,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'easymotion/vim-easymotion'
 
 
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
 
