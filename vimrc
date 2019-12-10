@@ -1,9 +1,15 @@
-"---------------------
+"bundle/vundle/README.md---------------------
 " Luc Dewavrin's vimrc
 "---------------------
 
 set nocompatible
 filetype off
+
+" 
+let isDev=0
+if filereadable(expand("~/.vim/env")) 
+   source ~/.vim/env
+endif
 
 " load plugins
 call plug#begin('~/.vim/plugged')
@@ -11,40 +17,42 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
-
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'Raimondi/delimitMate'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-sensible'
-Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'ap/vim-buftabline'
-Plug 'Yggdroot/indentLine'
-Plug 'easymotion/vim-easymotion'
-
-
-" Plug 'plasticboy/vim-markdown'
-Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
-
-" Use release branch
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree'
-" Add git status icons in nerd tree
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Fzf
-" Set in PATH the following commands
-" export FZF_DEFAULT_COMMAND="fd --type f --exclude node_modules"
-" export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-" export FZF_ALT_C_COMMAND="fd -t d --exclude node_modules . $HOME"
+if isDev
+   Plug 'tpope/vim-surround'
+   Plug 'tpope/vim-fugitive'
+   Plug 'Raimondi/delimitMate'
+   Plug 'godlygeek/tabular'
+   Plug 'tpope/vim-sensible'
+   Plug 'vim-scripts/ReplaceWithRegister'
+   Plug 'ap/vim-buftabline'
+   Plug 'Yggdroot/indentLine'
+   Plug 'easymotion/vim-easymotion'
 
-Plug 'junegunn/fzf', { 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
+   " Plug 'plasticboy/vim-markdown'
+   Plug 'cespare/vim-toml'
+   Plug 'rust-lang/rust.vim'
+
+   " Use release branch
+   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+   " Add git status icons in nerd tree
+   Plug 'Xuyuanp/nerdtree-git-plugin'
+
+   " Fzf
+   " Set in PATH the following commands
+   " export FZF_DEFAULT_COMMAND="fd --type f --exclude node_modules"
+   " export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+   " export FZF_ALT_C_COMMAND="fd -t d --exclude node_modules . $HOME"
+
+   Plug 'junegunn/fzf', { 'do': './install --all' }
+   Plug 'junegunn/fzf.vim'
+
+endif
 
 call plug#end()
 
@@ -225,130 +233,133 @@ endfunction
 " If more than one window and previous buffer was NERDTree, go back to it.
 autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
-"-------------------------------------------------------------------------
-"  delimitMate
-"-------------------------------------------------------------------------
-" let g:delimitMate_expand_cr = 1
-let g:delimitMate_expand_space = 1
-let g:delimitMate_smart_quotes = 1
-let g:delimitMate_expand_inside_quotes = 0
-let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+if isDev
+   "-------------------------------------------------------------------------
+   "  delimitMate
+   "-------------------------------------------------------------------------
+   " let g:delimitMate_expand_cr = 1
+   let g:delimitMate_expand_space = 1
+   let g:delimitMate_smart_quotes = 1
+   let g:delimitMate_expand_inside_quotes = 0
+   let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
-"-------------------------------------------------------------------------
-" fzf
-"-------------------------------------------------------------------------
-nnoremap <silent> <leader>p :FZF -m<cr>
-nnoremap <silent> <leader>b :Buffers<cr>
-" command below should be project dependant
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+   "-------------------------------------------------------------------------
+   " fzf
+   "-------------------------------------------------------------------------
+   nnoremap <silent> <leader>p :FZF -m<cr>
+   nnoremap <silent> <leader>b :Buffers<cr>
+   " command below should be project dependant
+   command! -bang -nargs=* Rg
+     \ call fzf#vim#grep(
+     \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+     \   <bang>0 ? fzf#vim#with_preview('up:60%')
+     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+     \   <bang>0)
 
-command! -bang -nargs=* Rgd
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.<q-args>, 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+   command! -bang -nargs=* Rgd
+     \ call fzf#vim#grep(
+     \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.<q-args>, 1,
+     \   <bang>0 ? fzf#vim#with_preview('up:60%')
+     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+     \   <bang>0)
 
-nnoremap <silent> <Leader>c :call fzf#run({
-\   'source':  'cat ~/.vim/commands',
-\   'sink':   '!bash -c',
-\   'down': '40%'
-\ })<CR>
+   nnoremap <silent> <Leader>c :call fzf#run({
+   \   'source':  'cat ~/.vim/commands',
+   \   'sink':   '!bash -c',
+   \   'down': '40%'
+   \ })<CR>
 
-"let g:fzf_history_dir = '~/.local/share/fzf-history'
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-
-
-"-------------------------------------------------------------------------
-" vim replace
-"-------------------------------------------------------------------------
-" replace with clipboard register, needs a motion afterwards and requires
-" +clipboard flag to be set like with gvim
-nmap <silent> <leader>r "*gr
-
-"-------------------------------------------------------------------------
-" buftabline
-"-------------------------------------------------------------------------
-set hidden
-"nnoremap <C-N> :bnext<CR>
-"nnoremap <C-P> :bprev<CR>
-
-"-------------------------------------------------------------------------
-" Coc
-"-------------------------------------------------------------------------
-" use <tab> for trigger completion and navigate to the next complete item
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-yaml', 
-  \ 'coc-json', 
-  \ 'coc-rust-analyzer',
-  \ ]
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" use <c-space>for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Remap for rename current word
-nmap <F6> <Plug>(coc-rename)
+   "let g:fzf_history_dir = '~/.local/share/fzf-history'
+   let g:fzf_history_dir = '~/.local/share/fzf-history'
+   " [Buffers] Jump to the existing window if possible
+   let g:fzf_buffers_jump = 1
 
 
-" indentLine
-" Issue with NerdTree disabling it
-let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '·'
-autocmd BufEnter NERD_tree* :LeadingSpaceDisable
+   "-------------------------------------------------------------------------
+   " vim replace
+   "-------------------------------------------------------------------------
+   " replace with clipboard register, needs a motion afterwards and requires
+   " +clipboard flag to be set like with gvim
+   nmap <silent> <leader>r "*gr
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
+   "-------------------------------------------------------------------------
+   " buftabline
+   "-------------------------------------------------------------------------
+   set hidden
+   "nnoremap <C-N> :bnext<CR>
+   "nnoremap <C-P> :bprev<CR>
 
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+   "-------------------------------------------------------------------------
+   " Coc
+   "-------------------------------------------------------------------------
+   " use <tab> for trigger completion and navigate to the next complete item
+   let g:coc_global_extensions = [
+     \ 'coc-tsserver',
+     \ 'coc-eslint', 
+     \ 'coc-prettier', 
+     \ 'coc-yaml', 
+     \ 'coc-json', 
+     \ 'coc-rust-analyzer',
+     \ ]
+   function! s:check_back_space() abort
+     let col = col('.') - 1
+     return !col || getline('.')[col - 1]  =~ '\s'
+   endfunction
 
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+   inoremap <silent><expr> <Tab>
+         \ pumvisible() ? "\<C-n>" :
+         \ <SID>check_back_space() ? "\<Tab>" :
+         \ coc#refresh()
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+   " use <c-space>for trigger completion
+   inoremap <silent><expr> <c-space> coc#refresh()
+   " Remap keys for gotos
+   nmap <silent> gd <Plug>(coc-definition)
+   nmap <silent> gy <Plug>(coc-type-definition)
+   nmap <silent> gi <Plug>(coc-implementation)
+   nmap <silent> gr <Plug>(coc-references)
 
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+   " Remap for rename current word
+   nmap <F6> <Plug>(coc-rename)
+
+
+   " indentLine
+   " Issue with NerdTree disabling it
+   let g:indentLine_leadingSpaceEnabled = 1
+   let g:indentLine_leadingSpaceChar = '·'
+   autocmd BufEnter NERD_tree* :LeadingSpaceDisable
+
+   " Use `:Format` to format current buffer
+   command! -nargs=0 Format :call CocAction('format')
+
+   " Use `:Fold` to fold current buffer
+   command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+   " use `:OR` for organize import of current buffer
+   command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+   " Add status line support, for integration with other plugin, checkout `:h coc-status`
+   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+   " Using CocList
+   " Show all diagnostics
+   nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+   " Manage extensions
+   nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+   " Show commands
+   nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+   " Find symbol of current document
+   nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+   " Search workspace symbols
+   nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+   " Do default action for next item.
+   nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+   " Do default action for previous item.
+   nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+   " Resume latest coc list
+   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+endif
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
