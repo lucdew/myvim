@@ -18,7 +18,7 @@ dev:
 	echo "let isDev=1" > "$(HOME)/.vim/env"
 
 .PHONY: update
-update: update-vim-plug update-plugins update-coc-plugins ## Updates pathogen and all plugins.
+update: update-vim-plug update-plugins  ## Updates pathogen and all plugins.
 
 .PHONY: update-plugins
 update-plugins: ## Updates all plugins.
