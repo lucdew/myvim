@@ -1,7 +1,6 @@
 "---------------------
 " Luc Dewavrin's vimrc
 "---------------------
-
 set nocompatible
 filetype off
 
