@@ -35,7 +35,7 @@ if isDev
 
    " Plug 'plasticboy/vim-markdown'
    Plug 'cespare/vim-toml'
-   Plug 'rust-lang/rust.vim'
+   " Plug 'rust-lang/rust.vim'
 
    " Use release branch
    Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -299,7 +299,7 @@ if isDev
      \ 'coc-prettier', 
      \ 'coc-yaml', 
      \ 'coc-json', 
-     \ 'coc-rust-analyzer',
+     \ 'coc-rls',
      \ ]
    function! s:check_back_space() abort
      let col = col('.') - 1
