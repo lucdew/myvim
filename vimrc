@@ -201,6 +201,10 @@ vnoremap // y/\V<C-R>"<CR>
 " command to delete all buffers except the one being edited
 command! BufOnly silent! execute "%bd|e#|bd#"
 
+" switch between buffers
+noremap <Leader>k :bn<cr>
+noremap <Leader>j :bp<cr>
+
 " ========================================================================
 "-------------------------------------------------------------------------
 "Plugins
