@@ -215,8 +215,9 @@ noremap <Leader>j :bp<cr>
 "NerdTree
 "-------------------------------------------------------------------------
 map <F2> :NERDTreeToggle %:p:h<CR>
-noremap <Leader>n :NERDTreeToggle<cr>
-noremap <Leader>f :NERDTreeFind<cr>
+noremap <Leader>n :NERDTreeToggle<cr> \| :wincmd p<CR>
+noremap <Leader>f :NERDTreeFind<cr> \| :wincmd p<CR>
+noremap <Leader>e :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store', 'node_modules']
 
