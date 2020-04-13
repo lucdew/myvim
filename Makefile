@@ -20,7 +20,7 @@ update: update-vim-plug update-plugins  ## Updates pathogen and all plugins.
 
 .PHONY: update-plugins
 update-plugins: ## Updates all plugins.
-	vim +'PlugInstall --sync' +qa
+	vim +'PlugUpdate --sync' +qa
 
 .PHONY: update-vim-plug
 update-vim-plug: ## Updates vim-plug.
