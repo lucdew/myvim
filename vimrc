@@ -334,6 +334,9 @@ if isDev
    " Issue with NerdTree disabling it
    let g:indentLine_leadingSpaceEnabled = 1
    let g:indentLine_leadingSpaceChar = '·'
+   " disable conceal that hides stretches of text based on syntax highlighting 
+   " for instance it hides double quotes in json files
+   let g:indentLine_setConceal = 0
    autocmd BufEnter NERD_tree* :LeadingSpaceDisable
 
    " Use `:Format` to format current buffer
