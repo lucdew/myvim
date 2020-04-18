@@ -44,11 +44,6 @@ if isDev
    Plug 'Xuyuanp/nerdtree-git-plugin'
 
    " Fzf
-   " Set in PATH the following commands
-   " export FZF_DEFAULT_COMMAND="fd --type f --exclude node_modules"
-   " export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-   " export FZF_ALT_C_COMMAND="fd -t d --exclude node_modules . $HOME"
-
    Plug 'junegunn/fzf', { 'do': './install --all' }
    Plug 'junegunn/fzf.vim'
 
@@ -253,6 +248,9 @@ if isDev
    "-------------------------------------------------------------------------
    " fzf
    "-------------------------------------------------------------------------
+   
+   let $FZF_DEFAULT_COMMAND="rg --files --column --line-number --no-heading --smart-case"
+   let $FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
    nnoremap <silent> <leader>p :FZF -m<cr>
    nnoremap <silent> <leader>b :Buffers<cr>
    " command below should be project dependant
