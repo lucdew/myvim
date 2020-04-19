@@ -249,7 +249,7 @@ if isDev
    " fzf
    "-------------------------------------------------------------------------
    
-   let $FZF_DEFAULT_COMMAND="rg --files --column --line-number --no-heading --smart-case"
+   let $FZF_DEFAULT_COMMAND="rg --files --column --line-number --no-heading --smart-case -g '!{node_modules,.git}'"
    let $FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
    nnoremap <silent> <leader>p :FZF -m<cr>
    nnoremap <silent> <leader>b :Buffers<cr>
