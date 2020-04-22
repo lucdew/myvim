@@ -201,6 +201,41 @@ command! BufOnly silent! execute "%bd|e#|bd#"
 noremap <Leader>k :bn<cr>
 noremap <Leader>j :bp<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Splits and Tabbed Files
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set splitbelow splitright
+
+" Remap splits navigation to just CTRL + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Make adjusing split sizes a bit more friendly
+noremap <silent> <C-Left> :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
+noremap <silent> <C-Up> :resize +3<CR>
+noremap <silent> <C-Down> :resize -3<CR>
+
+" Change 2 split windows from vert to horiz or horiz to vert
+map <Leader>tv <C-w>t<C-w>H
+map <Leader>th <C-w>t<C-w>K
+
+" next window
+map <Leader>w <C-w>w
+
+" Removes pipes | that act as seperators on splits
+" set fillchars+=vert:\ 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Open terminal inside Vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>tt :50vs \| :term<CR>
+" escape terminal mode with Esc
+tnoremap <Esc> <C-\><C-n>
+
 " ========================================================================
 "-------------------------------------------------------------------------
 "Plugins
@@ -255,14 +290,8 @@ if isDev
    nnoremap <silent> <leader>p :FZF -m<cr>
    nnoremap <silent> <leader>b :Buffers<cr>
    " command below should be project dependant
-   command! -bang -nargs=* Rg
-     \ call fzf#vim#grep(
-     \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-     \   <bang>0 ? fzf#vim#with_preview('up:60%')
-     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-     \   <bang>0)
 
-   command! -bang -nargs=* Rgd
+   command! -bang -complete=dir -nargs=* Rg
      \ call fzf#vim#grep(
      \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.<q-args>, 1,
      \   <bang>0 ? fzf#vim#with_preview('up:60%')
