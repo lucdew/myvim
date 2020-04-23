@@ -232,9 +232,10 @@ map <Leader>w <C-w>w
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Open terminal inside Vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>tt :50vs \| :term<CR>
+map <Leader>tt :50vs \| :term<CR>i<CR>
 " escape terminal mode with Esc
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>:q!<CR>
+au TermOpen term://*fzf* tnoremap <buffer> <Esc> <Esc>
 
 " ========================================================================
 "-------------------------------------------------------------------------
