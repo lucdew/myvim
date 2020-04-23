@@ -100,7 +100,12 @@ syntax enable
 " let g:rehash256 = 1
 "set guifont=Inconsolata:h15
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Enable to load .vimrc in current directory
+"    for project specific configuratio
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set exrc
+set secure
 
 if has("gui_running")	" GUI color and font settings
   " fix js regex syntax
@@ -126,18 +131,19 @@ if has("gui_running")	" GUI color and font settings
 "  set guitablabel=\[%N\]\ %t\ %M " Tab label with index of buffer
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Themes and colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 let g:gruvbox_guisp_fallback = "bg"
 
 colors gruvbox " terminal color settings
 set termguicolors
 
-"
-set hls
-let g:HLSpace = 1
-let g:HLColorScheme = g:colors_name
-"---- End: Show special characters
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimrc autoreload
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto reload vimrc when editing it
 if has("unix")
   autocmd! bufwritepost .vimrc source ~/.vimrc
@@ -165,6 +171,7 @@ set smartcase		" ignore case if search pattern is all lowercase,case-sensitive o
 set smarttab		" insert tabs on the start of a line according to context
 set nofoldenable        " disable automatic folding
 
+"---- Start: Show special characters (Press <F3>)
 function! ToggleSpecialCharactersHighlighting()
     if g:HLSpace
         highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
@@ -179,13 +186,17 @@ function! ToggleSpecialCharactersHighlighting()
     let g:HLSpace = !g:HLSpace
 endfunction
 
-"---- Start: Show special characters (Press <F3>)
 nmap <silent> <F3> <Esc>:call ToggleSpecialCharactersHighlighting()<CR>/<CR>
 
-highlight SpecialKey ctermfg=246
+" highlight SpecialKey ctermfg=246
 set list
 set list lcs=trail:·,tab:→\ 
-
+"
+set hls
+let g:HLSpace = 1
+let g:HLColorScheme = g:colors_name
+:call ToggleSpecialCharactersHighlighting()
+"---- End: Show special characters
 
 " Auto change directory to opened buffer
 " commented out it is annoying
