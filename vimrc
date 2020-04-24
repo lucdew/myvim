@@ -174,7 +174,6 @@ set nofoldenable        " disable automatic folding
 "---- Start: Show special characters (Press <F3>)
 function! ToggleSpecialCharactersHighlighting()
     if g:HLSpace
-        highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
         set listchars=eol:$,tab:→\ ,extends:>,precedes:<,nbsp:·,trail:·,space:·
         set list
     else
