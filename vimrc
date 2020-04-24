@@ -100,12 +100,6 @@ syntax enable
 " let g:rehash256 = 1
 "set guifont=Inconsolata:h15
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Enable to load .vimrc in current directory
-"    for project specific configuratio
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set exrc
-set secure
 
 if has("gui_running")	" GUI color and font settings
   " fix js regex syntax
@@ -435,4 +429,10 @@ fun! Big5()
 	set fileencoding=big5
 endfun
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Enable to load .vimrc in current directory
+"    for project specific configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set exrc
+set secure
 
