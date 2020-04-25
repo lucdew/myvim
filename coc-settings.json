@@ -1,10 +1,5 @@
 {
   "languageserver": {
-    "rust": {
-      "command": "rls",
-      "filetypes": ["rust"],
-      "rootPatterns": ["Cargo.toml"]
-    },
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
@@ -20,7 +15,7 @@
     "json",
     "go",
     "rs",
-     "rust",
+    "rust",
     "yaml",
     "yml",
     "javascriptreact",

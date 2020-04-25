@@ -339,7 +339,7 @@ if isDev
      \ 'coc-prettier', 
      \ 'coc-yaml', 
      \ 'coc-json', 
-     \ 'coc-rls',
+     \ 'coc-rust-analyzer'
      \ ]
    function! s:check_back_space() abort
      let col = col('.') - 1
