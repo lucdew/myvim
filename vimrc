@@ -171,21 +171,16 @@ function! ToggleSpecialCharactersHighlighting()
         set listchars=eol:$,tab:→\ ,extends:>,precedes:<,nbsp:·,trail:·,space:·
         set list
     else
-        highlight clear
-        highlight SpecialKey ctermfg=246
+        "highlight SpecialKey ctermfg=246
         silent colorscheme "".g:HLColorScheme
-        set list lcs=trail:·,tab:→\ 
+        highlight clear
+        set nolist
     endif
     let g:HLSpace = !g:HLSpace
 endfunction
 
-nmap <silent> <F3> <Esc>:call ToggleSpecialCharactersHighlighting()<CR>/<CR>
+nmap <silent> <F3> <Esc>:call ToggleSpecialCharactersHighlighting()<CR>
 
-" highlight SpecialKey ctermfg=246
-set list
-set list lcs=trail:·,tab:→\ 
-"
-set hls
 let g:HLSpace = 1
 let g:HLColorScheme = g:colors_name
 :call ToggleSpecialCharactersHighlighting()
