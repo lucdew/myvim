@@ -293,7 +293,7 @@ if isDev
 
    command! -bang -complete=dir -nargs=* Rg
      \ call fzf#vim#grep(
-     \   'rg --column --line-number --glob=!node_modules --glob=!target --no-heading --color=always --smart-case '.<q-args>, 1,
+     \   "rg --column --line-number --glob='!{node_modules,.git,target}' --no-heading --color=always --smart-case ".<q-args>, 1,
      \   <bang>0 ? fzf#vim#with_preview('up:60%')
      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
      \   <bang>0)
