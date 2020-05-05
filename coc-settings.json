@@ -13,19 +13,18 @@
     "typescript",
     "typescriptreact",
     "json",
+    "yaml",
+    "yml",
     "go",
     "rs",
     "rust",
-    "yaml",
-    "yml",
     "javascriptreact",
     "typescript.tsx",
     "graphql"
   ],
   "prettier.eslintIntegration": true,
   "prettier.disableLanguages": [
-     "vue",
-     "yaml"
+     "vue"
   ],
   "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
   "diagnostic.errorSign": "•",

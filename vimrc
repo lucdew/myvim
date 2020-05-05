@@ -332,7 +332,6 @@ if isDev
      \ 'coc-tsserver',
      \ 'coc-eslint', 
      \ 'coc-prettier', 
-     \ 'coc-yaml', 
      \ 'coc-json', 
      \ 'coc-rust-analyzer'
      \ ]
