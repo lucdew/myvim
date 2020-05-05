@@ -273,8 +273,23 @@ endfunction
 " Disabled not working as expected (close even if there are more than 1 buffer)
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" If more than one window and previous buffer was NERDTree, go back to it.
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+
+" Prevent opening buffers in NerdTree like when using Fzf
+autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
+autocmd BufWinEnter * call PreventBuffersInNERDTree()
+
+function! PreventBuffersInNERDTree()
+  if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree'
+    \ && exists('t:nerdtree_winnr') && bufwinnr('%') == t:nerdtree_winnr
+    \ && &buftype == '' && !exists('g:launching_fzf')
+    let bufnum = bufnr('%')
+    close
+    exe 'b ' . bufnum
+    NERDTree
+  endif
+  if exists('g:launching_fzf') | unlet g:launching_fzf | endif
+endfunction
+"-------------------------------------------------------------------------
 
 if isDev
    "-------------------------------------------------------------------------
