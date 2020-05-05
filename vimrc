@@ -128,6 +128,11 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Themes and colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>hl :set cursorline!<CR>
+set cursorline!
+
 set background=dark
 let g:gruvbox_guisp_fallback = "bg"
 
