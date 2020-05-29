@@ -238,7 +238,7 @@ map <Leader>w <C-w>w
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>tt :50vs \| :term<CR>i<CR>
 " escape terminal mode with Esc
-tnoremap <Esc> <C-\><C-n>:q!<CR>
+tnoremap <Esc> <C-\><C-n><CR>
 au TermOpen term://*fzf* tnoremap <buffer> <Esc> <Esc>
 
 " ========================================================================
