@@ -16,6 +16,7 @@
     "yaml",
     "yml",
     "go",
+    "python",
     "rs",
     "rust",
     "javascriptreact",
@@ -23,10 +24,13 @@
     "graphql"
   ],
   "prettier.eslintIntegration": true,
-  "prettier.disableLanguages": [
-     "vue"
+  "prettier.disableLanguages": ["vue"],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
   ],
-  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•"
