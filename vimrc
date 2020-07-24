@@ -67,8 +67,19 @@ set noruler
 set laststatus=2
 set autoread		" auto read when file is changed from outside
 
+if has('mouse')
+  set mouse=a
+endif
+
+" If linux then set ttymouse
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux" && !has('nvim')
+  set ttymouse=xterm
+endif
+
 " Always use the clipboard for all operations
 set clipboard+=unnamedplus
+
 
 " Better Completion
 set complete=.,w,b,u,t
