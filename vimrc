@@ -252,6 +252,17 @@ map <Leader>tt :50vs \| :term<CR>i<CR>
 tnoremap <Esc> <C-\><C-n><CR>
 au TermOpen term://*fzf* tnoremap <buffer> <Esc> <Esc>
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => some visual mode helpers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" replace currently highlighted text
+vnoremap <C-r> "ay<Esc>:%s/<C-r>a//g<left><left>
+" search for visually hightlighted text
+vnoremap <C-f> y<ESC>/<C-r>"<CR>
+
+
 " ========================================================================
 "-------------------------------------------------------------------------
 "Plugins
@@ -461,4 +472,5 @@ endfun
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set exrc
 set secure
+
 
