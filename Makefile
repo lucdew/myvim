@@ -29,7 +29,7 @@ update-vim-plug: ## Updates vim-plug.
 .PHONY: README.md
 README.md: ## Generates and updates plugin info in README.md.
 	@sed -i '/Plugins Used/q' $@
-	@cat vimrc | grep -ozP "(?s)plugged'\)\K.*?(?=\ncall plug\#end)" | tr -d '\000'  | grep -E '^Plug' | sed -E "s#Plug '([^']+)'.*#* [github.com/\1](https://github.com/\1)#g" >> $@
+	@cat vimrc | grep -ozP "(?s)plugged'\)\K.*?(?=\ncall plug\#end)" | tr -d '\000'  | grep -E '^\s*Plug' | sed -E "s#\s*Plug '([^']+)'.*#* [github.com/\1](https://github.com/\1)#g" >> $@
 	
 
 check_defined = \

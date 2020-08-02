@@ -31,6 +31,7 @@ if isDev
    Plug 'ap/vim-buftabline'
    Plug 'Yggdroot/indentLine'
    Plug 'easymotion/vim-easymotion'
+   Plug 'hashivim/vim-terraform'
 
 
    " Plug 'plasticboy/vim-markdown'
@@ -439,7 +440,12 @@ if isDev
    " Resume latest coc list
    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+   "-------------------------------------------------------------------------
+   " vim terraform
+   "-------------------------------------------------------------------------
+   let g:terraform_fmt_on_save=1
 endif
+
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
