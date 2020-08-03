@@ -216,6 +216,8 @@ command! BufOnly silent! execute "%bd|e#|bd#"
 " switch between buffers
 noremap <Leader>k :bn<cr>
 noremap <Leader>j :bp<cr>
+" open previous buffer
+noremap <Leader>p :e#<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Splits and Tabbed Files
@@ -276,7 +278,7 @@ vnoremap <C-f> y<ESC>/<C-r>"<CR>
 map <F2> :NERDTreeToggle %:p:h<CR>
 noremap <Leader>n :NERDTreeToggle<cr> \| :wincmd p<CR>
 noremap <Leader>f :NERDTreeFind<cr> \| :wincmd p<CR>
-noremap <Leader>e :NERDTreeFind<cr>
+noremap <Leader>s :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store', 'node_modules']
 
@@ -330,7 +332,7 @@ if isDev
    
    let $FZF_DEFAULT_COMMAND="rg --files --column --line-number --no-heading --smart-case -g '!{node_modules,.git}'"
    let $FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-   nnoremap <silent> <leader>p :FZF -m<cr>
+   nnoremap <silent> <leader>e :FZF -m<cr>
    nnoremap <silent> <leader>b :Buffers<cr>
    " command below should be project dependant
 
